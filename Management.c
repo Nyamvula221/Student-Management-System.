@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_STUDENTS 100
+#define MAX_STUDENTS 30
 
 struct Student {
-    char name[50];
+    char name[20];
     int roll_number;
     float marks[2]; 
 };
@@ -18,8 +18,8 @@ void addStudent() {
         scanf(" %[^\n]", students[student_count].name);
         printf("Enter roll number: ");
         scanf("%d", &students[student_count].roll_number);
-        printf("Enter marks for 3 subjects:\n");
-        for (int i = 0; i < 3; i++) {
+        printf("Enter marks for 2 subjects:\n");
+        for (int i = 0; i < 2; i++) {
             printf("Subject %d: ", i + 1);
             scanf("%f", &students[student_count].marks[i]);
         }
@@ -37,9 +37,9 @@ void displayStudents() {
     }
     printf("\nList of Students:\n");
     for (int i = 0; i < student_count; i++) {
-        printf("Roll Number: %d, Name: %s, Marks: %.2f, %.2f, %.2f\n",
+        printf("Roll Number: %d, Name: %s, Marks: %.2f, %.2f\n",
                students[i].roll_number, students[i].name,
-               students[i].marks[0], students[i].marks[1], students[i].marks[2]);
+               students[i].marks[0], students[i].marks[1);
     }
 }
 
@@ -49,9 +49,9 @@ void searchStudent() {
     scanf("%d", &roll_number);
     for (int i = 0; i < student_count; i++) {
         if (students[i].roll_number == roll_number) {
-            printf("Student Found: Roll Number: %d, Name: %s, Marks: %.2f, %.2f, %.2f\n",
+            printf("Student Found: Roll Number: %d, Name: %s, Marks: %.2f, %.2f\n",
                    students[i].roll_number, students[i].name,
-                   students[i].marks[0], students[i].marks[1], students[i].marks[2]);
+                   students[i].marks[0], students[i].marks[1];
             return;
         }
     }
@@ -67,8 +67,8 @@ void updateStudent() {
             printf("Updating details for Roll Number: %d\n", roll_number);
             printf("Enter new name: ");
             scanf(" %[^\n]", students[i].name);
-            printf("Enter new marks for 3 subjects:\n");
-            for (int j = 0; j < 3; j++) {
+            printf("Enter new marks for 2 subjects:\n");
+            for (int j = 0; j < 2; j++) {
                 printf("Subject %d: ", j + 1);
                 scanf("%f", &students[i].marks[j]);
             }
@@ -101,13 +101,13 @@ int main() {
 
     do {
         printf("\n--- Student Management System ---\n");
-        printf("1. Add Student\n");
+        printf("1. New Student\n");
         printf("2. Display All Students\n");
         printf("3. Search for a Student\n");
         printf("4. Update Student Details\n");
         printf("5. Delete a Student\n");
         printf("6. Exit\n");
-        printf("Enter your choice: ");
+        printf("Enter choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
